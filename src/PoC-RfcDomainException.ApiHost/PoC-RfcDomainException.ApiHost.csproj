@@ -4,4 +4,15 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="5.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PoC-RfcDomainException.ApiHost.Contract\PoC-RfcDomainException.ApiHost.Contract.csproj" />
+    <ProjectReference Include="..\PoC-RfcDomainException.Database\PoC-RfcDomainException.Database.csproj" />
+  </ItemGroup>
+
 </Project>

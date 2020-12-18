@@ -5,6 +5,14 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoC-RfcDomainException.ApiHost", "PoC-RfcDomainException.ApiHost\PoC-RfcDomainException.ApiHost.csproj", "{F8F79E53-9DC7-4C42-9DF7-978780C91810}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contracts", "Contracts", "{6BE97965-B570-4D46-BCE4-5C01F55354B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoC-RfcDomainException.ApiHost.Contract", "PoC-RfcDomainException.ApiHost.Contract\PoC-RfcDomainException.ApiHost.Contract.csproj", "{3CA38C89-D24D-44F1-8B13-47E645767572}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoC-RfcDomainException.Database", "PoC-RfcDomainException.Database\PoC-RfcDomainException.Database.csproj", "{11615471-C20D-4F80-951D-D9669417CFA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PoC-RfcDomainException.Database.Contract", "PoC-RfcDomainException.Database.Contract\PoC-RfcDomainException.Database.Contract.csproj", "{117A4FE1-146D-4E63-AC97-345404CE1835}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +23,25 @@ Global
 		{F8F79E53-9DC7-4C42-9DF7-978780C91810}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8F79E53-9DC7-4C42-9DF7-978780C91810}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8F79E53-9DC7-4C42-9DF7-978780C91810}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CA38C89-D24D-44F1-8B13-47E645767572}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CA38C89-D24D-44F1-8B13-47E645767572}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CA38C89-D24D-44F1-8B13-47E645767572}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CA38C89-D24D-44F1-8B13-47E645767572}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11615471-C20D-4F80-951D-D9669417CFA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11615471-C20D-4F80-951D-D9669417CFA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11615471-C20D-4F80-951D-D9669417CFA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11615471-C20D-4F80-951D-D9669417CFA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{117A4FE1-146D-4E63-AC97-345404CE1835}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{117A4FE1-146D-4E63-AC97-345404CE1835}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{117A4FE1-146D-4E63-AC97-345404CE1835}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{117A4FE1-146D-4E63-AC97-345404CE1835}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3CA38C89-D24D-44F1-8B13-47E645767572} = {6BE97965-B570-4D46-BCE4-5C01F55354B4}
+		{117A4FE1-146D-4E63-AC97-345404CE1835} = {6BE97965-B570-4D46-BCE4-5C01F55354B4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7ABF2A30-82B3-49F1-8CF9-D34FF3A92B6A}
