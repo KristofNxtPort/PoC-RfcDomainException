@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Net;
 using System.Runtime.Serialization;
 using NxtPort.Lib.Exceptions;
 
@@ -17,7 +18,7 @@ namespace PoC_RfcDomainException.Domain.Contract.Exceptions
         {
         }
 
-        public override int StatusCode { get; } = 404;
+        public override HttpStatusCode StatusCode { get; } = HttpStatusCode.NotFound;
         public override string Instance { get; } = "urn:nxtport:poc:rfc-domain-exception:car-not-found";
     }
 }

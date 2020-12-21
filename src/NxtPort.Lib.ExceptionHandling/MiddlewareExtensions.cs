@@ -32,9 +32,10 @@ namespace NxtPort.Lib.ExceptionHandling
                         {
                             logger.LogError("Handling a {exceptionType} of {urn}.", nameof(NxtPortHttpException), exception.Instance);
 
-                            context.Response.StatusCode = exception.StatusCode;
+                            var statusCode = (int) exception.StatusCode;
+                            context.Response.StatusCode = statusCode;
 
-                            var problemDetail = problemDetailsFactory.CreateProblemDetails(context, exception.StatusCode, detail: exception.Detail, instance: exception.Instance);
+                            var problemDetail = problemDetailsFactory.CreateProblemDetails(context, statusCode, detail: exception.Detail, instance: exception.Instance);
                             await context.Response.WriteJsonAsync(problemDetail);
 
                             break;

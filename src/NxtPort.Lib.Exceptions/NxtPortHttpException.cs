@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Net;
 using System.Runtime.Serialization;
 
 namespace NxtPort.Lib.Exceptions
@@ -19,7 +20,7 @@ namespace NxtPort.Lib.Exceptions
 
         public string Detail { get; private set; }
 
-        public abstract int StatusCode { get; }
+        public abstract HttpStatusCode StatusCode { get; }
         public abstract string Instance { get; }
     }
 }
