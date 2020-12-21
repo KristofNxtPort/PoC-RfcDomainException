@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using NxtPort.Lib.ExceptionHandling.InternalExtensions;
 using NxtPort.Lib.Exceptions;
 
@@ -8,9 +9,9 @@ namespace NxtPort.Lib.ExceptionHandling
 {
     public static class MiddlewareExtensions
     {
-        public static IApplicationBuilder UseNxtPortExceptionHandler(this IApplicationBuilder app)
+        public static IApplicationBuilder UseNxtPortExceptionHandler(this IApplicationBuilder app, ILogger logger)
         {
-            app.UseExceptionHandler(errorApp =>
+            return app.UseExceptionHandler(errorApp =>
             {
                 errorApp.Run(async context =>
                 {
@@ -18,7 +19,10 @@ namespace NxtPort.Lib.ExceptionHandling
 
                     if (problemDetailsFactory == null)
                     {
+                        logger.LogError("Cannot find {factory} in {services}, using generic fallback exception.", nameof(ProblemDetailsFactory), nameof(context.RequestServices));
+
                         await context.Response.WriteFallbackExceptionAsync();
+
                         return;
                     }
 
@@ -26,6 +30,8 @@ namespace NxtPort.Lib.ExceptionHandling
                     {
                         case NxtPortHttpException exception:
                         {
+                            logger.LogError("Handling a {exceptionType} of {urn}.", nameof(NxtPortHttpException), exception.Instance);
+
                             context.Response.StatusCode = exception.StatusCode;
 
                             var problemDetail = problemDetailsFactory.CreateProblemDetails(context, exception.StatusCode, detail: exception.Detail, instance: exception.Instance);
@@ -35,20 +41,22 @@ namespace NxtPort.Lib.ExceptionHandling
                         }
                         case NxtPortException exception:
                         {
+                            logger.LogError("Handling a {exceptionType} of {urn}.", nameof(NxtPortException), exception.Instance);
+
                             var problemDetail = problemDetailsFactory.CreateProblemDetails(context, title: exception.Title, detail: exception.Detail, instance: exception.Instance);
                             await context.Response.WriteJsonAsync(problemDetail);
 
                             break;
                         }
                         default:
+                            logger.LogError("Handing an exception that is not from NxtPort.");
+
                             await context.Response.WriteJsonAsync(problemDetailsFactory.CreateProblemDetails(context));
 
                             break;
                     }
                 });
             });
-
-            return app;
         }
     }
 }

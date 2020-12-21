@@ -1,9 +1,11 @@
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using NxtPort.Lib.ExceptionHandling;
 using PoC_RfcDomainException.Database;
 
@@ -41,9 +43,9 @@ namespace PoC_RfcDomainException.ApiHost
                 .AddDatabaseRepositories();
         }
 
-        public void Configure(IApplicationBuilder app)
+        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
         {
-            app.UseNxtPortExceptionHandler();
+            app.UseNxtPortExceptionHandler(loggerFactory.CreateLogger(Assembly.GetExecutingAssembly().GetName().Name));
 
             app.UseHttpsRedirection();
 
