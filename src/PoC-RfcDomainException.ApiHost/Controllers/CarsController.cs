@@ -42,6 +42,7 @@ namespace PoC_RfcDomainException.ApiHost.Controllers
         public async Task<ActionResult<Car>> GetAsync(Guid id, CancellationToken token)
         {
             var car = await _queryRepository.GetCarAsync(id, token);
+            
             if (car == null)
                 return NotFound();
             
@@ -55,6 +56,7 @@ namespace PoC_RfcDomainException.ApiHost.Controllers
         {
             var domainModel = _mapper.MapToDomain(car);
             var domainCar = await _service.CreateCarAsync(domainModel, token);
+            
             var createdCar = _mapper.MapToApi(domainCar);
             return CreatedAtAction(nameof(GetAsync), new { id = createdCar.Id }, createdCar);
         }

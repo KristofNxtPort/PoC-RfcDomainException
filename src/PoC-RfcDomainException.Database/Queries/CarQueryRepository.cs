@@ -16,6 +16,8 @@ namespace PoC_RfcDomainException.Database.Queries
         public CarQueryRepository(CarDbContext dbContext)
         {
             _dbContext = dbContext;
+            
+            _dbContext.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
         public async Task<IReadOnlyList<Car>> GetCarsAsync(CancellationToken token)
