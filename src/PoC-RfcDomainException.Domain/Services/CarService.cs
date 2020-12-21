@@ -33,6 +33,9 @@ namespace PoC_RfcDomainException.Domain.Services
             await _commandRepository.InsertCarAsync(dbModel, token);
             
             var dbCar = await _queryRepository.FindCarByBrandAndModelAsync(car.Brand, car.Model, token);
+            if (dbCar == null)
+                throw new CarNotFoundException($"{car.Brand} {car.Model} not found in database.");
+
             return _mapper.MapToDomain(dbCar);
         }
     }
