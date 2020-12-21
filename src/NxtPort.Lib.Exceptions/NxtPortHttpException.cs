@@ -19,7 +19,7 @@ namespace NxtPort.Lib.Exceptions
 
         public string Detail { get; private set; }
 
-        public abstract int StatusCode { get; set; }
-        public abstract string Instance { get; set; }
+        public abstract int StatusCode { get; }
+        public abstract string Instance { get; }
     }
 }
