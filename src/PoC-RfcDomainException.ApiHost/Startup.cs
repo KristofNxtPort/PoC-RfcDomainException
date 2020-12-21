@@ -1,11 +1,10 @@
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
+using NxtPort.Lib.ExceptionHandling;
 using PoC_RfcDomainException.Database;
 
 namespace PoC_RfcDomainException.ApiHost
@@ -41,10 +40,9 @@ namespace PoC_RfcDomainException.ApiHost
                 .AddDatabaseRepositories();
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app)
         {
-            if (env.IsDevelopment())
-                app.UseDeveloperExceptionPage();
+            app.UseNxtPortExceptionHandler();
 
             app.UseHttpsRedirection();
 

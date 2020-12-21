@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NxtPort.Lib.ExceptionHandling\NxtPort.Lib.ExceptionHandling.csproj" />
     <ProjectReference Include="..\PoC-RfcDomainException.Database\PoC-RfcDomainException.Database.csproj" />
     <ProjectReference Include="..\PoC-RfcDomainException.Domain.Contract\PoC-RfcDomainException.Domain.Contract.csproj" />
     <ProjectReference Include="..\PoC-RfcDomainException.Domain\PoC-RfcDomainException.Domain.csproj" />
