@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -9,6 +10,7 @@ using PoC_RfcDomainException.Database;
 
 namespace PoC_RfcDomainException.ApiHost
 {
+    [ExcludeFromCodeCoverage]
     internal class Startup
     {
         public void ConfigureServices(IServiceCollection services)

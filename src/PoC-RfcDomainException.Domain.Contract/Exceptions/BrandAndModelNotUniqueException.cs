@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.Serialization;
 using NxtPort.Lib.Exceptions;
 
@@ -11,6 +12,7 @@ namespace PoC_RfcDomainException.Domain.Contract.Exceptions
         {
         }
 
+        [ExcludeFromCodeCoverage]
         protected BrandAndModelNotUniqueException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }

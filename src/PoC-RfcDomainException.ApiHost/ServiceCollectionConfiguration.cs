@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using Microsoft.Extensions.DependencyInjection;
 using PoC_RfcDomainException.ApiHost.Mappers;
 using PoC_RfcDomainException.ApiHost.Mappers.Interfaces;
@@ -10,6 +11,7 @@ using PoC_RfcDomainException.Domain.Services;
 
 namespace PoC_RfcDomainException.ApiHost
 {
+    [ExcludeFromCodeCoverage]
     internal static class ServiceCollectionConfiguration
     {
         public static IServiceCollection AddMappers(this IServiceCollection services)
