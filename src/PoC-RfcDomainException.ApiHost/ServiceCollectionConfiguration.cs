@@ -1,7 +1,9 @@
 using System.Diagnostics.CodeAnalysis;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using PoC_RfcDomainException.ApiHost.Mappers;
 using PoC_RfcDomainException.ApiHost.Mappers.Interfaces;
+using PoC_RfcDomainException.Database;
 using PoC_RfcDomainException.Database.Commands;
 using PoC_RfcDomainException.Database.Contract.Commands;
 using PoC_RfcDomainException.Database.Contract.Queries;
@@ -14,7 +16,14 @@ namespace PoC_RfcDomainException.ApiHost
     [ExcludeFromCodeCoverage]
     internal static class ServiceCollectionConfiguration
     {
-        public static IServiceCollection AddMappers(this IServiceCollection services)
+        public static IServiceCollection AddDatabase(this IServiceCollection services)
+        {
+            services.AddDbContext<CarDbContext>(options => options.UseInMemoryDatabase("CarDb"));
+
+            return services;
+        }
+
+        public static IServiceCollection AddApiMappers(this IServiceCollection services)
         {
             services.AddTransient<ICarMapper, CarMapper>();
 

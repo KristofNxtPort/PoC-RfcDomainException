@@ -3,7 +3,6 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using NxtPort.Lib.ExceptionHandling;
 using PoC_RfcDomainException.Database;
@@ -33,10 +32,10 @@ namespace PoC_RfcDomainException.ApiHost
                     configuration.ImplicitlyValidateChildProperties = true;
                 });
 
-            services.AddDbContext<CarDbContext>(options => options.UseInMemoryDatabase("CarDb"));
+            services.AddDatabase();
 
             services
-                .AddMappers()
+                .AddApiMappers()
                 .AddDomainServices()
                 .AddDomainMappers()
                 .AddDatabaseRepositories();
