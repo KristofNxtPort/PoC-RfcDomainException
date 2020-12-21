@@ -14,7 +14,13 @@ namespace NxtPort.Lib.ExceptionHandling
             {
                 errorApp.Run(async context =>
                 {
-                    var problemDetailsFactory = context.RequestServices.GetRequiredService<ProblemDetailsFactory>();
+                    var problemDetailsFactory = context.RequestServices?.GetRequiredService<ProblemDetailsFactory>();
+
+                    if (problemDetailsFactory == null)
+                    {
+                        await context.Response.WriteFallbackExceptionAsync();
+                        return;
+                    }
 
                     switch (context.GetException())
                     {

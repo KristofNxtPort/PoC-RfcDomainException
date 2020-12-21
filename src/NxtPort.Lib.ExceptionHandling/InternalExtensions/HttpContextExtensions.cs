@@ -8,8 +8,8 @@ namespace NxtPort.Lib.ExceptionHandling.InternalExtensions
     {
         public static Exception GetException(this HttpContext context)
         {
-            var exceptionFeature = context.Features.Get<IExceptionHandlerFeature>();
-            return exceptionFeature.Error;
+            var exceptionFeature = context.Features?.Get<IExceptionHandlerFeature>();
+            return exceptionFeature?.Error;
         }
     }
 }
