@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
+      <_Parameter1>PoC-RfcDomainException.ApiHost</_Parameter1>
+    </AssemblyAttribute>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PoC-RfcDomainException.Database.Contract\PoC-RfcDomainException.Database.Contract.csproj" />
+    <ProjectReference Include="..\PoC-RfcDomainException.Domain.Contract\PoC-RfcDomainException.Domain.Contract.csproj" />
+  </ItemGroup>
+
+</Project>

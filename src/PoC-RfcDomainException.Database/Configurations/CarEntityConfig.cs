@@ -10,7 +10,9 @@ namespace PoC_RfcDomainException.Database.Configurations
         {
             builder.ToTable("Car");
 
-            builder.HasKey(key => new { key.Brand, key.Model });
+            builder.HasKey(key => key.Id);
+
+            builder.HasIndex(index => new { index.Brand, index.Model }).IsUnique();
         }
     }
 }
