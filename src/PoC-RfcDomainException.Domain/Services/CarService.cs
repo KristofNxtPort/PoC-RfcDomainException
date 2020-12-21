@@ -28,7 +28,7 @@ namespace PoC_RfcDomainException.Domain.Services
             
             var existingCar = await _queryRepository.FindCarByBrandAndModelAsync(car.Brand, car.Model, token);
             if (existingCar != null)
-                throw new BrandAndModelNotUniqueException();
+                throw new BrandAndModelNotUniqueException($"{car.Brand} {car.Model} already exists.");
             
             await _commandRepository.InsertCarAsync(dbModel, token);
             
