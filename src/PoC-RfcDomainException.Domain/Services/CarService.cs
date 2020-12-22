@@ -38,5 +38,10 @@ namespace PoC_RfcDomainException.Domain.Services
 
             return _mapper.MapToDomain(dbCar);
         }
+
+        public void TestHttpError()
+        {
+            throw new CarNotFoundException("This is just for testing.");
+        }
     }
 }

@@ -60,5 +60,13 @@ namespace PoC_RfcDomainException.ApiHost.Controllers
             var createdCar = _mapper.MapToApi(domainCar);
             return CreatedAtAction(nameof(GetAsync), new { id = createdCar.Id }, createdCar);
         }
+
+        [HttpGet]
+        [Route("httperror")]
+        public IActionResult TestHttpError()
+        {
+            _service.TestHttpError();
+            return Ok();
+        }
     }
 }
